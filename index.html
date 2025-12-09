@@ -12,17 +12,25 @@
     <div class="container"></div>
     <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
     <script>
-        
+        const input = document.querySelector('.searchBox');
+        const btn = document.querySelector('.js-button');
         const P = new Pokedex.Pokedex()
         let container = document.querySelector('.container')
-
+       
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchPokemon();
+        });
         
-       document.querySelector('.js-button')
-       .addEventListener('click', () => {
-           
-        let type = document.querySelector('.searchBox').value
-        getPokemonDetails(type)
-       });
+      
+       btn.addEventListener('click', searchPokemon);
+
+       function searchPokemon() {
+            const pokemonName = input.value.trim().toLowerCase();
+            if (!pokemonName) return;
+             container.innerHTML = 'Loading...';
+
+            getPokemonDetails(pokemonName);
+       }
 
         
        
@@ -48,12 +56,17 @@
                         return name + ': ' + value;
                     });
                     container.innerHTML = `
-                    <h1>${response.name}</h1>
-                    <img src="${imageUrl}" alt="${name}" width="200">
+                    <h1>${response.name.toUpperCase()}</h1>
+                    <img src="${imageUrl}" alt="${response.name}" width="200">
                     <p>${statList.join('<br>')}</p>
                     <p>${moveList.join('<br>')}</p>`
                   
             })
+            .catch((error) => {
+                    console.error(error);
+                    container.innerHTML = `<h3 class="error">Pokemon "${pokemon}" not found! 😢</h3>`;
+                });
+            
 
 
            
