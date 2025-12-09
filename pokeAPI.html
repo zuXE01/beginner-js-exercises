@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input placeholder= "Search Pokemon here"  type="text" class="searchBox">
+    <button class="js-button">Yes</button>
+    <div class="container"></div>
+    <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
+    <script>
+        
+        const P = new Pokedex.Pokedex()
+        let container = document.querySelector('.container')
+
+        
+       document.querySelector('.js-button')
+       .addEventListener('click', () => {
+           
+        let type = document.querySelector('.searchBox').value
+        getPokemonDetails(type)
+       });
+
+        
+       
+
+        function getPokemonDetails(pokemon) {
+             P.getPokemonByName(pokemon)
+                .then((response) => {
+                    console.log(response.stats);
+                    console.log(response.sprites);
+                    const imageUrl = response.sprites.other['official-artwork'].front_default;
+
+                    const moveList = response.moves
+                        .slice(0, 4)
+                            .map((item) => {
+                                return item.move.name
+                            })
+                    
+
+                    const statList = response.stats
+                    .slice(0, 6).map((item) => {
+                        const name =  item.stat .name;
+                        const value = item.base_stat;
+                        return name + ': ' + value;
+                    });
+                    container.innerHTML = `
+                    <h1>${response.name}</h1>
+                    <img src="${imageUrl}" alt="${name}" width="200">
+                    <p>${statList.join('<br>')}</p>
+                    <p>${moveList.join('<br>')}</p>`
+                  
+            })
+
+
+           
+        }
+
+          
+        
+       
+    </script>
+
+    
+    
+</body>
+</html>

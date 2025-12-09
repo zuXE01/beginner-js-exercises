@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>1st number</p>
+        <input class="js-input1st" type="text">
+        <p>2nd number</p>
+        <input class="js-input2nd" type="text">
+        <button class="js-multiply-button">multiply</button>
+        <button class="js-divide-button">divide</button>
+        <div class="js-result"></div>
+
+    </div>
+
+    <script> //calculate the two value with arithmetic
+
+        const inputElementFirst = document.querySelector('.js-input1st');
+        const inputElementSecond = document.querySelector('.js-input2nd');
+
+        let result;
+
+        function multiplyValue(value1, value2) {
+          result =  value1 * value2
+          document.querySelector('.js-result').innerHTML =`
+          <p>The result is: ${result}</p>`;
+          console.log(result);
+          
+        };
+
+        function divideValue(value1, value2) {
+                result =  value1 / value2
+                console.log(result);
+                document.querySelector('.js-result').innerHTML =`
+          <p>The result is: ${result}</p>`;
+          console.log(result);
+          
+                
+                };
+
+        document.querySelector('.js-multiply-button').addEventListener('click', () => {
+            multiplyValue(inputElementFirst.value, inputElementSecond.value)
+        });
+         document.querySelector('.js-divide-button').addEventListener('click', () => {
+            divideValue(inputElementFirst.value, inputElementSecond.value)
+        });
+    </script>
+</body>
+</html>

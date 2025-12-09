@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=sc, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let dateList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday' , 'Friday', 'Saturday'];
+        const date = new Date();
+        const options = {weekday: 'long'};
+        const time = {
+            currentDay: date.toLocaleDateString('en-US', options),
+            options: {weekday: 'long'},
+            currentHour: date.getHours(), 
+            currentMinute: date.getMinutes(),
+            currentSecond: date.getSeconds()
+        };
+
+        let hour = addZero(time.currentHour);
+        const minute = addZero(time.currentMinute);
+        const second = addZero(time.currentSecond);
+     
+
+        let indicator = 'AM';
+        
+        if (hour === 0 ) {
+            hour = 12;
+        }
+
+        if (hour === 12) {
+            indicator = 'PM';
+        }
+        if (hour > 12) {
+            hour = hour - 12;
+            indicator = 'PM'
+        }
+        
+        let i = 0;
+
+        while ( i < dateList.length) {
+            i++
+            if (time.currentDay === dateList[i]) {
+                break;
+                i++
+            }
+        }
+
+        function addZero(value) {
+            if (value < 10) {
+                return '0' + value;
+            }
+            return value;
+        }
+
+        console.log(`${dateList[i]} : ${hour} : ${minute} : ${second} : ${indicator}` );
+     
+    </script>
+</body>
+</html>

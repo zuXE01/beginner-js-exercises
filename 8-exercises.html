@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input class="js-input" type="number">
+    <input class="js-input1" type="number">
+    <button onclick="sumIntegers();">Calc</button>
+    <div class="container">
+
+    </div>
+    
+    <script>
+      
+        // sum two integers triple if two values are the same
+        function sumIntegers() {
+            const inputElement1  = document.querySelector('.js-input').valueAsNumber;
+            const inputElement2  = document.querySelector('.js-input1').valueAsNumber;
+            let total;
+            total = inputElement1 + inputElement2;
+            if (inputElement1 === inputElement2) {
+                total = total * 3; 
+            };
+            document.querySelector('.container').innerHTML = `The total is: ${total}`
+
+            return total;
+        };
+
+        
+
+    </script>
+</body>
+</html>

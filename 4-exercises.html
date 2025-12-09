@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const triangle = {
+            a: 5,
+            b: 6,
+            c: 7
+        };
+//calculate the area of triangle
+        let s;
+
+        s = (triangle.a + triangle.b + triangle.c) / 2;
+        let area = Math.sqrt(s * (s-triangle.a) * (s-triangle.b) * (s-triangle.c));
+        console.log(area.toFixed(2));
+        
+    </script>
+</body>
+</html>

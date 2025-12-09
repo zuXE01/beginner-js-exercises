@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="js-input">
+    <button class="js-button" style="height: 50px;"></button>
+    <script>
+        // random integer guess game
+        document.querySelector('.js-button').addEventListener('click', () => {
+                const playerInput = document.querySelector('.js-input').value;
+
+            let randomInteger = Math.random();
+        randomInteger = (randomInteger * 10).toFixed(0);
+        
+            if (randomInteger === playerInput) {
+                  console.log('good work');
+                  console.log(randomInteger);
+                  
+                    
+            }
+            else {
+                console.log('Not matched');
+                console.log(randomInteger);
+                
+                
+            };
+
+
+        });
+
+       
+        
+    </script>
+</body>
+</html>

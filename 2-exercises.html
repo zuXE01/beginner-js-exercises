@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+  <div class="js-div"></div>  
+<input type="text" class="js-input">   
+<button class="js-button">yes</button>
+<div class="js-div2"></div>
+<p>Score: <span class="js-score">0</span></p>
+<p>Time: <span class="js-time">10</span>s</p>
+<button class="js-restart">Restart</button>
+
+
+<script>
+const words = ['toilet', 'toys', 'sun', 'monster', 'triple'];
+let randomWord = randomWords(words);
+let score = 0;
+let wordDisplay = document.querySelector('.js-div').innerHTML = `
+<p>
+  ${randomWord}  
+</p>
+`;
+
+
+
+const answer = {
+  correctAns: 'correct',
+  wrongAns: 'wrong'
+};
+
+
+document.querySelector('.js-button').addEventListener('click', () => {
+  let inputElement = document.querySelector('.js-input').value;
+  if (inputElement === randomWord) {
+   let randomWord = randomWords(words);
+  
+   
+    score++;
+    console.log(answer.correctAns);
+    
+    document.querySelector('.js-score').innerHTML = `${score}`;
+     document.querySelector('.js-div').innerHTML = `<p>${randomWord}</p>`
+     
+   
+    
+} else {
+    answer.wrongAns;
+      
+}
+
+
+
+});
+
+
+
+function randomWords(words1) {
+ let words3 = Math.floor(Math.random() * words.length);
+ return words1[words3];
+}
+
+
+document.querySelector('.js-restart').addEventListener('click', () => {
+  score = 0
+  document.querySelector('.js-score').innerHTML = `${score}`;
+});
+
+
+</script>
+</body>
+
+
+</html>
